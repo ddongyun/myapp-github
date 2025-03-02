@@ -1,15 +1,24 @@
 'use client'
 
 import { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { auth } from '@/app/firebase/config'
 
 export default function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+	const [ createUserWithEmailAndPassword ] = useCreateUserWithEmailAndPassword(auth);
 
-  const signUp = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
+  const signUp = async () => {
+    try{
+			const res = await createUserWithEmailAndPassword(email, password);
+			console.log(res);
+			setEmail('');
+			setPassword('');
+		} catch(e) {
+			console.error(e);
+		}
+  }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

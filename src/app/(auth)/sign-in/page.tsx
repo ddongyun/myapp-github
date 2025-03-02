@@ -1,14 +1,44 @@
 'use client'
 
 import { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/app/firebase/config';
+import { useRouter } from 'next/navigation';
+import Cookies from "js-cookie";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+	const [ signInWithEmailAndPassword ] = useSignInWithEmailAndPassword(auth);
+  const router = useRouter();
 
-  const signIn = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
+  const signIn = async () => {
+	  
+		try{
+			const result = await signInWithEmailAndPassword(email, password);
+			
+			if (!result) {
+				console.log("login failed");
+				return;
+			}
+			
+			const user = result.user;
+			const token = await user.getIdToken();
+			
+			Cookies.set("authToken", token, {
+				expires: 7, 
+        secure: process.env.NODE_ENV === 'production', // 프로덕션에서만 secure 설정
+        sameSite: "strict"
+			});
+			
+			console.log(token);
+			console.log("로그인 성공 및 쿠키 저장 완료");
+			
+      router.push('/');
+      console.log("redirection to root page")
+		} catch(e) {
+			console.error(e);
+		}
   };
 
   return (
