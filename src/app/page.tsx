@@ -3,7 +3,6 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '@/app/firebase/config';
 import Cookies from 'js-cookie';
-import { useState } from 'react';
 
 export default function Home() {
 
