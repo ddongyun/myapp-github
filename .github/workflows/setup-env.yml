@@ -1,4 +1,4 @@
-name: Deploy Next.js App
+name: Setup Firebase Environment Variables
 
 on:
   push:
