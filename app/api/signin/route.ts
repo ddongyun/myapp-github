@@ -13,7 +13,7 @@ const commonOptions = {
     maxAge: 12 * 60 * 60 * 24 // twelve days
   },
   serviceAccount: {
-    projectId: process.env.FIREBASE_PROJECT_ID,
+    projectId: process.env.FIREBASE_PROJECT_ID as string,
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     privateKey: process.env.FIREBASE_PRIVATE_KEY
   }
