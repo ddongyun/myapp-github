@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { refreshNextResponseCookiesWithToken } from 'next-firebase-auth-edge/lib/next/cookies';
 
 const commonOptions = {
-  apiKey: process.env.FIREBASE_API_KEY,,
+  apiKey: process.env.FIREBASE_API_KEY,
   cookieName: 'AuthToken',
   cookieSignatureKeys: ['Key-Should-Be-at-least-32-bytes-in-length'],
   cookieSerializeOptions: {
