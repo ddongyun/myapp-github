@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { refreshNextResponseCookiesWithToken } from 'next-firebase-auth-edge/lib/next/cookies';
 
+console.log(process.env.NEXT_PUBLIC_API_KEY);
+
 const commonOptions = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   cookieName: 'AuthToken',
