@@ -6,7 +6,7 @@ export default function Home() {
   const router = useRouter();
 
   console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY)
-  console.log(process.env.NEXT_PUBLIC_FIREBASE_API_ID)
+  console.log(process.env.NEXT_PUBLIC_FIREBASE_APP_ID)
 
   const handleRedirect = () => {
     router.push('/new');
