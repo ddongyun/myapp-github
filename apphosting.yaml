@@ -5,8 +5,8 @@ env:
       - BUILD
       - RUNTIME
 
-  - variable: NEXT_PUBLIC_FIREBASE_API_ID
-    secret: API_ID
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    secret: APP_ID
     availability:
       - BUILD
       - RUNTIME
